@@ -1,10 +1,12 @@
 import React, { useState,useEffect } from 'react';
 import './App.css';
-import { Button,FormControl,Input,InputLabel } from '@material-ui/core';
+import {FormControl,Input,InputLabel } from '@material-ui/core';
 import Message from "./Message"
 import db from './firebase';
 import firebase from "firebase";
 import FlipMove from 'react-flip-move';
+import SendIcon from '@material-ui/icons/Send';
+import { IconButton } from '@material-ui/core';
 
 function App() {
 
@@ -42,11 +44,13 @@ function App() {
     <div className="App">
         <h1>Hello {username}</h1>      
         {/* what we want to add?? */}
-        <form>
-              <FormControl>
+        <form className="app__form">
+              <FormControl className="app__formcontrol">
               <InputLabel>Enter Message...</InputLabel>
-              <Input value={input} onChange={event =>setInput(event.target.value)} />
-              <Button variant="contained" color="primary" type="submit" disabled={!input} onClick={sendMessage}>Send Messages</Button>
+              <Input className="app__input" value={input} onChange={event =>setInput(event.target.value)} />
+              <IconButton className="icon__button" variant="contained" color="primary" type="submit" disabled={!input} onClick={sendMessage}>
+                <SendIcon/>
+              </IconButton>
               </FormControl>            
         </form>
 
